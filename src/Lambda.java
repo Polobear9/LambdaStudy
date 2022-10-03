@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 public class Lambda {
     public static void main(String[] args) {
@@ -26,6 +28,18 @@ public class Lambda {
         }
 
         System.out.println(sumNumbers);// Logic work test.
+
+        //---------->> Stream (Lambda ways) << ----------
+        Predicate<Integer> testThree = new Predicate<Integer>(){
+            @Override
+            public boolean test(Integer number) {
+                return number % 3 == 0;
+            }
+        };
+
+        numbers.stream()//Collection --> Stream
+                .filter(testThree)//Stream --> Stream
+                .toArray();//Stream --> Object Array.
 
     }
 }
